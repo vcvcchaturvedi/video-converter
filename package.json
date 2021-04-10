@@ -1,21 +1,33 @@
 {
   "name": "video-converter",
+  "description": "A video format converter that converts from .mp4 to HSS format",
+  "author": "Vinay Chaturvedi",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "electron-is-dev": "^1.0.1",
+    "ffmpeg": "0.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "@ffmpeg-installer/ffmpeg": "^1.0.17",
+    "fluent-ffmpeg": "^2.1.2"
   },
+  "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "electron": "^4.0.4",
+    "electron-builder": "^20.38.5",
+    "wait-on": "^3.2.0"
   }
 }
